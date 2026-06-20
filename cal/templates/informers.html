@@ -2,12 +2,12 @@
 
 {% block main %}
 {% for i in informers %}
-<p>
-<a href="{% url 'informer' i.id %}">{{ i }}</a> <br />
-Код информера: <br />
-<textarea rows="3" cols="80">
+<div class="box">
+  <p class="title is-5"><a href="{% url 'informer' i.id %}">{{ i }}</a></p>
+  <p class="mb-2">Код информера:</p>
+  <textarea class="textarea" rows="3" readonly>
 <a href="{{ site_url }}"><iframe src="{{ site_url }}{% url 'informer' i.id %}" width="{{ i.image_width }}" height="{{ i.image_height }}" scrolling="no" frameborder="0"></iframe></a>
 </textarea>
-</p>
+</div>
 {% endfor %}
 {% endblock %}

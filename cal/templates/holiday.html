@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% block title %}{{ holiday }}. {{ holiday.next_date }} Календарь праздников. {% endblock %}
 {% block main %}
-<h1>{{ holiday }} {{ holiday.next_date }}</h1>
+<h1 class="title is-3">{{ holiday }} {{ holiday.next_date }}</h1>
 
 {% if holiday.image %}
-<img src="{{ MEDIA_URL }}{{ holiday.image }}" width="500px" />
+<figure class="image mb-4" style="max-width:500px;">
+  <img src="{{ MEDIA_URL }}{{ holiday.image }}">
+</figure>
 {% endif %}
 
-{{ holiday.description|safe }}
-
+<div class="content">{{ holiday.description|safe }}</div>
 {% endblock %}

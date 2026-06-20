@@ -2,10 +2,9 @@
 
 {% block main %}
 {% if day %}
-<h1>{{ current_date }} Праздники в этот день:</h1>
+<h1 class="title is-3">{{ current_date }} Праздники в этот день:</h1>
 {% else %}
-<h1>Праздники в этот месяц: </h1>
-
+<h1 class="title is-3">Праздники в этот месяц:</h1>
 {% endif %}
 
 {% include "list.html" %}

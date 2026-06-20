@@ -1,60 +1,9 @@
-body {
-    font-family: arial,san serif;
-    font-size:14px;
+#content-header,
+#content-footer {
+    text-align: center;
 }
 
-#header {
-    margin-bottom:20px;
-    
-}
-#main {
-    margin-top:10px;
-    margin-bottom:10px;
-
-}
-#footer {
-    border-top: 1px solid #C9D7F1;
-/*    background-color: #F5F5FF;*/
-    color:gray;
-    margin-top:40px;
-    margin-bottom:10px;
-    padding:20px;
-}
-#wraper {
-    width:1000px;
-    margin-left:auto;
-    margin-right:auto;
-    padding: 10px;
-
-/*    border-radius:14px;
-    -moz-border-radius:14px;*/
-
-}
-
-a {
-    color:#6486EB;
-}
-a:hover {
-    color: #043793;/*#00CE00;*/
-    text-decoration:none;
-}
-
-.holyday {
-    float:left;
-    width:100%;
-    padding:4px;
-}
-.image {
-    float:left;
-    width:320px;
-    padding:4px;
-}
-.holyday_name a {
-    font-size:26px;
-}
-.holyday_name  {
-    font-size:26px;
-}
-.holyday_text {
-    padding-top:5px;
+#content-header:empty,
+#content-footer:empty {
+    display: none;
 }
