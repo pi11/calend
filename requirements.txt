@@ -1,0 +1,9 @@
+Django
+psycopg2
+pil
+python-memcached
+django-postgrespool
+-e hg+https://bitbucket.org/pi11/django-email-auth#egg=emailuser
+-e hg+https://bitbucket.org/pi11/django-baner#egg=django-baner
+-e hg+https://bitbucket.org/pi11/django-misc-helpers#egg=djangohelpers
+

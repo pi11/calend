@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="holydays_list" style="clear">
+  <div class="holyday_name">Сегодня: {{ now_date }}<br /></div>
+  {% for h in holidays %}
+  <div class="holyday">
+    <div class="image"><a href="{% url 'holiday' h.id %}">{% if h.image %}<img src="{{ h.image.url }}" width="300px"/>{% else %}<img src="{{ STATIC_URL }}images/noimage.png" width="200px"/>{% endif %}</a></div>
+    <div class="holyday_name"><a href="{% url 'holiday' h.id %}">{{ h }}</a></div>
+    <div class="holyday_text">
+      <a href="{% url 'holiday_date' month=h.get_month day=h.get_day %}">{{ h.get_date }}</a>
+      <br />
+      {{ h.description|safe }}
+    </div>
+  </div>
+  {% endfor %}
+
+  
+  <div class="holyday_name" style="padding-top:20px;">Завтра: {{ next_date }}<br /></div>
+  {% for h in tholidays %}
+  <div class="holyday">
+    <div class="image"><a href="{% url 'holiday' h.id %}">{% if h.image %}<img src="{{ h.image.url }}" width="300px"/>{% else %}<img src="{{ STATIC_URL }}images/noimage.png" width="200px"/>{% endif %}</a></div>
+    <div class="holyday_name"><a href="{% url 'holiday' h.id %}">{{ h }}</a></div>
+    <div class="holyday_text">
+      <a href="{% url 'holiday_date' month=h.get_month day=h.get_day %}">{{ h.get_date }}</a>
+      <br />
+      {{ h.description|safe }}
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+{% endblock %}

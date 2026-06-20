@@ -1,0 +1,22 @@
+{% for h in holidays %}
+<div class="col-lg-12" style="padding-top:4px;">
+  
+  {% ifchanged h.month %}
+  <h3 class="col-lg-12"><a href="{% url 'holiday_date_month' month=h.month %}">{{ h.next_date|date:"F" }}</a></h3>
+  {% endifchanged %}
+    <div class="col-lg-9 pull-left">
+      {% if h.image %}
+      <div class="col-lg-2">
+        <img src="{{ h.get_thumb }}" width="100px" height="100px" />
+      </div>
+      {% endif %}
+      <div class="col-lg-6 pull-right">
+        <a href="{% url 'holiday' h.id %}">{{ h }}</a> 
+      </div>
+    </div>
+    <div class="col-lg-2 pull-right">
+      <a href="{% url 'holiday_date' month=h.get_month day=h.get_day %}">{{ h.get_date }}</a>
+    </div>
+</div>
+
+{% endfor %}

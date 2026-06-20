@@ -1,0 +1,49 @@
+{% load banertag %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{% block title %}Календарь праздников{% endblock %}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta content="text/html; charset=utf-8" http-equiv="Content-type" /> 
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.2.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<link href="{{ STATIC_URL }}css/main.css?id=2" type="text/css" rel="stylesheet" />
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+
+		<link href="{% url 'rss' %}" rel="alternate" type="application/rss+xml" title="Праздники сегодня!" />
+		{% block add_headers %}
+		{% endblock %}
+	</head>
+	<body>
+		<div id="wraper" class="container">
+			<div id="header">
+				{% block header %}
+					<a href="/">Главная страница</a> | <a href="{% url 'all_holydays' %}">Все праздники</a>
+				{% endblock %}
+			</div>
+
+			<div id="main">
+
+				<div id="content-header">{% get_baner content-header %}</div>
+				{% block main %}
+				{% endblock %}
+				<div id="content-footer">{% get_baner content-footer %}</div>
+
+			</div>
+			<div style="clear:both;">&nbsp; </div>
+			<div id="footer">
+				{% block footer %}
+					&copy; 2011-2013 <a href="http://jp-net.ru/">JP-Net Group</a> & <a href="http://webii.ru/">WebII Lab</a> 
+					|   <a href="{% url 'informers_list' %}">Информеры</a> | <a href="{% url 'rss' %}">RSS</a>
+				{% endblock %}
+			</div>
+		</div>
+		{% include "counters.html" %}
+	</body>
+</html>

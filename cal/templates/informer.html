@@ -1,0 +1,15 @@
+<div style="position:;z-index:900">
+  <div style="z-index:1000; position:absolute; font: {{ i.informer_font }}; left:{{ i.informer_x|add:delta }}px; top:{{ i.informer_y }}px;">{{ i.get_date_to }}</div>
+  <img src="{{ MEDIA_URL }}{{ i.image }}" width="{{ i.image_width }}" height="{{ i.image_height }}"/>
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t26.6;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet: показано число посетителей за"+
+" сегодня' "+
+"border='0' width='0' height='1'><\/a>")
+//--></script><!--/LiveInternet-->
+</div>
