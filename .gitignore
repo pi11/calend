@@ -1,0 +1,16 @@
+*~
+\#*\#
+.\#*
+local_settings.py
+*~
+.#*.*
+*.pyc
+*.pyo
+*.swp
+*.swo
+*.rar
+*.bak
+*.gz
+local_settings.py
+static/*/admin/
+*.pid

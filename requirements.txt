@@ -1,9 +1,3 @@
-Django
-psycopg2
-pil
-python-memcached
-django-postgrespool
--e hg+https://bitbucket.org/pi11/django-email-auth#egg=emailuser
--e hg+https://bitbucket.org/pi11/django-baner#egg=django-baner
--e hg+https://bitbucket.org/pi11/django-misc-helpers#egg=djangohelpers
-
+Django>=5.2,<5.3
+psycopg2-binary>=2.9
+Pillow>=11.0

@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
-from django.conf.urls import *
+from django.urls import re_path
 from cal.views import *
 from .feed import HolidaysFeed
 
 urlpatterns = [
-    url('i/(\d+)/$', informer, name='informer'),
-    url('informers/$', informers_list, name='informers_list'),
-    url('d/(?P<month>\d+)/(?P<day>\d+)/$', day, name='holiday_date'),
-    url('d/(?P<month>\d+)/$', day, name='holiday_date_month'),
+    re_path(r'i/(\d+)/$', informer, name='informer'),
+    re_path(r'informers/$', informers_list, name='informers_list'),
+    re_path(r'd/(?P<month>\d+)/(?P<day>\d+)/$', day, name='holiday_date'),
+    re_path(r'd/(?P<month>\d+)/$', day, name='holiday_date_month'),
 
-    url('h/(\d+)/$', holiday, name='holiday'),
-    url('all/$', all_holydays, name='all_holydays'),
-    url('rss/$', HolidaysFeed(), name='rss'),
+    re_path(r'h/(\d+)/$', holiday, name='holiday'),
+    re_path(r'all/$', all_holydays, name='all_holydays'),
+    re_path(r'rss/$', HolidaysFeed(), name='rss'),
 ]

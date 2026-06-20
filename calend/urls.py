@@ -1,12 +1,10 @@
-from django.conf.urls import *
+from django.urls import include, path
 
 from django.contrib import admin
 from cal.views import index
 
-admin.autodiscover()
-
 urlpatterns = [
-    url(r'^$', index, name="index"),
-    url(r'^c/', include('cal.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    path('', index, name="index"),
+    path('c/', include('cal.urls')),
+    path('admin/', admin.site.urls),
 ]

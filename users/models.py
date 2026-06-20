@@ -8,16 +8,12 @@ class Profile (models.Model):
 
     """User profile """
 
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     picture = models.ImageField(
         upload_to='photos/%Y/%m/%d', max_length=512, null=True, blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.user.username
-
-    @models.permalink
-    def get_absolute_url(self):
-        return ('users.views.profile', seld.id)
 
     def resend_confirmation(self):
         self.email_active = False
@@ -27,16 +23,12 @@ class Profile (models.Model):
 class EmailConfirm(models.Model):
 
     """Temporary table used to confirm users emails"""
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     token = models.CharField(max_length=100, blank=True, null=True, default="")
     publication_date = models.DateTimeField(auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.user.username
-
-    @models.permalink
-    def get_absolute_url(self):
-        return ('users.views.confirm', [self.token])
 
 
 class EmailTemplate(models.Model):

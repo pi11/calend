@@ -2,7 +2,7 @@
 
 from datetime import date
 from django.contrib.syndication.views import Feed
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.template.defaultfilters import truncatewords
 from cal.models import Holiday
 

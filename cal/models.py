@@ -9,7 +9,7 @@ from django.db import models
 from django.conf import settings
 
 from users.models import Profile
-from djangohelpers.images import scale
+from cal.thumbnails import scale
 
 MONTHS = (
     (1, u'Январь'),
@@ -41,7 +41,7 @@ MONTHS_R = (
     (12, u'Декабря'),
 )
 
-DAYS = ((x, x) for x in xrange(1, 32))
+DAYS = ((x, x) for x in range(1, 32))
 
 DATE_TYPES = (
     (0, u'Обычная дата'),
@@ -76,7 +76,7 @@ class Holiday(models.Model):
     name = models.CharField(max_length=400)
     image = models.ImageField(upload_to="uploads/%Y-%m-%d/",
                               null=True, blank=True)
-    profile = models.ForeignKey(Profile)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     description = models.TextField()
     date_type = models.IntegerField(choices=DATE_TYPES, default=0)
     month = models.IntegerField(choices=MONTHS, default=1,
@@ -96,16 +96,16 @@ class Holiday(models.Model):
     next_date = models.DateField(null=True, blank=True,
                                  verbose_name=u"Следующая дата праздника")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def get_thumb(self):
         try:
             thumb = scale(self.image, "%sx%s" % (settings.THUMB_WIDTH,
                                                  settings.THUMB_HEIGHT))
-        except:
+        except Exception:
             import traceback
-            print traceback.format_exc()
+            print(traceback.format_exc())
             thumb = False
         return thumb
 
@@ -149,7 +149,8 @@ class Holiday(models.Model):
 
 class PostCard(models.Model):
     image = models.ImageField(upload_to="uploads/%Y-%m-%d/")
-    holiday = models.ForeignKey(Holiday, blank=True, null=True)
+    holiday = models.ForeignKey(Holiday, blank=True, null=True,
+                                on_delete=models.SET_NULL)
     publication_date = models.DateTimeField(auto_now=True)
     informer_x = models.IntegerField(default=0)
     informer_y = models.IntegerField(default=0)
@@ -158,7 +159,7 @@ class PostCard(models.Model):
     informer_font = models.CharField(max_length=50, default="")
     is_informer = models.BooleanField(default=False)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s - %s" % (self.id, self.holiday)
 
     def get_date_to(self):

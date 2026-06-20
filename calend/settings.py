@@ -20,14 +20,9 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale
-USE_L10N = True
-
-
 # List of callables that know how to import templates from various sources.
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -43,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -51,10 +47,14 @@ INSTALLED_APPS = (
     'users',
     'baner',
 )
+
+# Default primary key field type for models that don't specify one.
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 THUMB_WIDTH = 100
 THUMB_HEIGHT = 150
 
 import os.path
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-from local_settings import *
+from .local_settings import *

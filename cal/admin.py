@@ -10,7 +10,7 @@ class HolidayAdmin(admin.ModelAdmin):
     search_fields = ["name", "description"]
 
 class PostCardAdmin(admin.ModelAdmin):
-    list_display = ["__unicode__"]
+    list_display = ["__str__"]
 
 admin.site.register(Holiday, HolidayAdmin)
 admin.site.register(PostCard, PostCardAdmin)
