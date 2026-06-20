@@ -1,53 +1,53 @@
 {% load banertag %}
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>{% block title %}Календарь праздников{% endblock %}</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta charset="utf-8">
-		<link href="{{ STATIC_URL }}css/bulma.min.css" type="text/css" rel="stylesheet" />
-		<link href="{{ STATIC_URL }}css/main.css?id=3" type="text/css" rel="stylesheet" />
+  <head>
+    <title>{% block title %}Календарь праздников{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="utf-8">
+	<link href="{{ STATIC_URL }}css/bulma.min.css" type="text/css" rel="stylesheet" />
+	<link href="{{ STATIC_URL }}css/main.css?id=3" type="text/css" rel="stylesheet" />
 
-		<link href="{% url 'rss' %}" rel="alternate" type="application/rss+xml" title="Праздники сегодня!" />
-		{% block add_headers %}
+	<link href="{% url 'rss' %}" rel="alternate" type="application/rss+xml" title="Праздники сегодня!" />
+	{% block add_headers %}
+	{% endblock %}
+      </head>
+      <body>
+	<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+	  <div class="container">
+	    <div class="navbar-brand">
+	      <a class="navbar-item" href="/"><strong>Календарь праздников</strong></a>
+	    </div>
+	    <div class="navbar-menu">
+	      <div class="navbar-start">
+		{% block header %}
+		<a class="navbar-item" href="/">Главная страница</a>
+		<a class="navbar-item" href="{% url 'all_holydays' %}">Все праздники</a>
 		{% endblock %}
-	</head>
-	<body>
-		<nav class="navbar is-light" role="navigation" aria-label="main navigation">
-			<div class="container">
-				<div class="navbar-brand">
-					<a class="navbar-item" href="/"><strong>Календарь праздников</strong></a>
-				</div>
-				<div class="navbar-menu">
-					<div class="navbar-start">
-						{% block header %}
-							<a class="navbar-item" href="/">Главная страница</a>
-							<a class="navbar-item" href="{% url 'all_holydays' %}">Все праздники</a>
-						{% endblock %}
-					</div>
-				</div>
-			</div>
-		</nav>
+	      </div>
+	    </div>
+	  </div>
+	</nav>
 
-		<section class="section">
-			<div class="container">
-				<div id="content-header">{% get_baner content-header %}</div>
-				{% block main %}
-				{% endblock %}
-				<div id="content-footer">{% get_baner content-footer %}</div>
-			</div>
-		</section>
+	<section class="section">
+	  <div class="container">
+	    <div id="content-header">{% get_baner content-header %}</div>
+	    {% block main %}
+	    {% endblock %}
+	    <div id="content-footer">{% get_baner content-footer %}</div>
+	  </div>
+	</section>
 
-		<footer class="footer">
-			<div class="container">
-				<div class="content has-text-centered">
-					{% block footer %}
-						&copy; 2011-2013 <a href="http://jp-net.ru/">JP-Net Group</a> &amp; <a href="http://webii.ru/">WebII Lab</a>
-						| <a href="{% url 'informers_list' %}">Информеры</a> | <a href="{% url 'rss' %}">RSS</a>
-					{% endblock %}
-				</div>
-			</div>
-		</footer>
-		{% include "counters.html" %}
-	</body>
-</html>
+	<footer class="footer">
+	  <div class="container">
+	    <div class="content has-text-centered">
+	      {% block footer %}
+	      &copy; 2011-2013 <a href="https://jpg-1.com/">Прикольные картинки</a> &amp; <a href="https://stost.ru/">Поздравления</a> &amp; <a href="https://kto.zvonil.tel/">Кто звонил?</a>
+	      | <a href="{% url 'informers_list' %}">Информеры</a> | <a href="{% url 'rss' %}">RSS</a>
+	      {% endblock %}
+	    </div>
+	  </div>
+	</footer>
+	{% include "counters.html" %}
+      </body>
+    </html>
